@@ -51,7 +51,13 @@ public class DriverProgram {
 			}
 			
 			else if(option.equals("3")) {
-				System.out.println("Op 3");
+				System.out.println("Por favor ingrese el Tema del que desea saber la cantidad");
+				String givenTitle = Strscaner.next();
+				
+				int QtyOfSpecificTitle = Adminisitrator.QtyDocsByTopic(AvailableDocuments, givenTitle);
+				
+				System.out.println("Hay: " + QtyOfSpecificTitle + " documentos para el Tema/Materia: " + givenTitle);
+				
 			}
 			
 			else if(option.equals("4")) {

@@ -40,6 +40,15 @@ public class Library_Admin {
 		return null;
 	}
 	
+	public int QtyDocsByTopic(ArrayList<documents> _availableDocuments, String given_Topic) {
+		int QtyOfDocuments = 0;
+		for(documents aDocument : _availableDocuments) {
+			if(aDocument.getTopic().equals(given_Topic)) {
+				QtyOfDocuments++;
+			}
+		}
+		return QtyOfDocuments;
+	}
 	
 	public ArrayList<client> getListOfClientes() {
 		return ListOfClientes;
