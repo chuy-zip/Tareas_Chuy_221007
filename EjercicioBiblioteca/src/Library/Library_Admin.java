@@ -31,8 +31,13 @@ public class Library_Admin {
 		}
 	}
 	
-	public void getBookFromID(ArrayList<documents> _availableDocuments, int _id) {
-		
+	public String getTitleFromID(ArrayList<documents> _availableDocuments, String _id) {
+		for (documents aDocument : _availableDocuments) {
+			if (aDocument.getID().equals(_id)) {
+				return aDocument.getTitle();
+			}
+		}		
+		return null;
 	}
 	
 	

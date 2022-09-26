@@ -30,14 +30,24 @@ public class DriverProgram {
 			option = "" + Strscaner.nextInt();
 			
 			if(option.equals("1")) {
-				System.out.println("Op 1");
 				getDocumentInfo(Strscaner, AvailableDocuments);
 				Adminisitrator.ShowAvailableDocs(AvailableDocuments);
 				
 			}
 			
 			else if(option.equals("2")) {
-				System.out.println("Op 2");
+				System.out.println("Por favor ingrese el ID del documento");
+				String givenID = Strscaner.next();
+				
+				String DocumentName = Adminisitrator.getTitleFromID(AvailableDocuments, givenID);
+				
+				if (DocumentName != null) {
+					System.out.println("El titulo del documento es: " + DocumentName);
+				}
+				else {
+					System.out.println("El ID ingresado no se encuentra en la biblioteca\n");
+				}
+				
 			}
 			
 			else if(option.equals("3")) {
