@@ -62,10 +62,46 @@ public class DriverProgram {
 			
 			else if(option.equals("4")) {
 				System.out.println("Op 4");
+				client cliente;
+				
+				System.out.println("Por favor ingrese el ID del cliente");
+				String clientID = Strscaner.next(); 
+				
+				client ExistingClient = Adminisitrator.clientExists(ListOfClientes, clientID);
+				
+				if(ExistingClient == null) {
+					System.out.println("No se encontro un usuario con ese ID, se agregara un nuevo cliente");
+					ExistingClient = addNewClient(ListOfClientes, Strscaner, clientID);
+					
+				}
+				
+				System.out.println("Por favor ingrese el ID del documento que desea tomar prestado");
+				String requiredbookID = Strscaner.next();
+					
+				boolean availability = Adminisitrator.BookIsAvailable(AvailableDocuments, requiredbookID);
+				System.out.println(availability);
+				
+				if (availability == true && ExistingClient.getBorrowedQty() <= 5) {
+					Adminisitrator.borrowBook(AvailableDocuments, ExistingClient, requiredbookID);
+					ListOfClientes.add(ExistingClient);
+						
+				}
+				else if(ExistingClient.getBorrowedQty() == 5){
+					System.out.println("No se puede rentar el libro");
+				}
+				
+				else if(availability == false) {
+					System.out.println("Ese libro no esta disponible o no existe");
+				}
+				
 			}
 			
 			else if(option.equals("5")) {
-				System.out.println("Op 5");
+				System.out.println("Ingrese el ID del cliente");
+				String clientID = Strscaner.next();
+				
+				System.out.println("Ingrese el ID del libro a regresar");
+				String ReturneddocID = Strscaner.next();
 			}
 			
 			else if(option.equals("6")) {
@@ -92,7 +128,7 @@ public class DriverProgram {
 							"3.Cantidad de documentos por Materia/Tema \n"+
 							"4.Tomar Un libro prestado (Con numero de ID)\n"+
 							"5.Devolver Un libro\n"+
-							"6.Ingresar Cliente y conocer la cantidad de cada Tipo de Documentos Prestados \n" +
+							"6.Ingresar ID de un Cliente y conocer la cantidad de cada Tipo de Documentos Prestados \n" +
 							"7.Cantidad de revistas por Tema Disponibles\n"+
 							"8.Ingresar un libro o artículo para revisar disponibilidad\n"+
 							"9.Salir\n");
@@ -200,6 +236,28 @@ public class DriverProgram {
 		}
 		
 		
+	}
+	
+	public static client addNewClient(ArrayList<client> ClientList,Scanner strScanner, String IDclient) {
+		;
+		String clientName;
+		String Addres;
+		int BorrowedQty;
+		
+		client cliente;
+		
+		
+		System.out.println("Ingrese el nombre del Cliente");
+		clientName = strScanner.next();
+		
+		System.out.println("Ingrese la direccion del cliente");
+		Addres = strScanner.next();
+		
+		BorrowedQty = 0;
+		
+		cliente = new client(IDclient, clientName, Addres, BorrowedQty);
+		
+		return cliente;
 	}
 
 }

@@ -16,7 +16,7 @@ public class Library_Admin {
 		
 		for (documents aDocument : _availableDocuments) {
 			if(aDocument.Type == 1) {
-				System.out.println("ID: " +aDocument.getID() + " Titulo: " + aDocument.getTitle() + " Autor: " + aDocument.getAuthor() + 
+				System.out.println("ID: " + aDocument.getID() + " Titulo: " + aDocument.getTitle() + " Autor: " + aDocument.getAuthor() + 
 						" Editorial: " + aDocument.getEditorial() + " Tema: " + aDocument.getTopic() + " Cantidad: " + aDocument.getQty() );
 			}
 			else if(aDocument.Type == 2) {
@@ -49,6 +49,45 @@ public class Library_Admin {
 		}
 		return QtyOfDocuments;
 	}
+	
+	public boolean BookIsAvailable(ArrayList<documents> _availableDocuments, String given_ID){
+		for (documents aDocument : _availableDocuments) {
+			if(aDocument.getID().equals(given_ID)) {
+				if(aDocument.isStatusAvailable()) {
+					return true;
+				}
+			}
+			
+		}
+		
+		return false;
+	}
+	
+	public client clientExists(ArrayList<client> _clientlist, String client_ID) {
+		for (client aClient: _clientlist) {
+			if(aClient.getIDClient().equals(client_ID)) {
+				return aClient;
+			}
+		}
+		return null;
+	}
+	
+	public void borrowBook(ArrayList<documents> _availableDocuments, client _aClient, String requiredBookID) {
+		for (documents aDocument: _availableDocuments) {
+			if(aDocument.getID().equals(requiredBookID)) {
+				aDocument.setQty(aDocument.getQty() - 1);
+				_aClient.getBorrowedBooks().add(aDocument);
+				_aClient.setBorrowedQty(_aClient.getBorrowedQty() + 1) ;
+				
+				if(aDocument.getQty() == 0) {
+					aDocument.setStatusAvailable(false);
+				}
+			}
+		}
+		
+		System.out.println("Prestado con exito");
+		
+	} 
 	
 	public ArrayList<client> getListOfClientes() {
 		return ListOfClientes;

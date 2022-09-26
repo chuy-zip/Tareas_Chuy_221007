@@ -14,6 +14,7 @@ public class client {
 		this.setName(_name);
 		this.setAddres(_addres);
 		this.setBorrowedQty(_Borrqty);
+		BorrowedBooks = new ArrayList<documents>();
 	}
 
 
