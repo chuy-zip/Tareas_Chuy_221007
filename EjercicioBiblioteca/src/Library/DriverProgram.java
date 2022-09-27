@@ -31,7 +31,6 @@ public class DriverProgram {
 			
 			if(option.equals("1")) {
 				getDocumentInfo(Strscaner, AvailableDocuments);
-				Adminisitrator.ShowAvailableDocs(AvailableDocuments);
 				
 			}
 			
@@ -108,7 +107,6 @@ public class DriverProgram {
 				
 				if(cliente != null && bookExists == true) {
 					for (client aClient:ListOfClientes) {
-						System.out.println(aClient.getIDClient() + cliente.getIDClient() );
 						if(aClient.getIDClient().equals(cliente.getIDClient()) ) {
 							Adminisitrator.returnBook(AvailableDocuments, aClient, ReturnDocID);
 							System.out.println("Se ha regresado el libro");
@@ -124,7 +122,11 @@ public class DriverProgram {
 			}
 			
 			else if(option.equals("6")) {
-				System.out.println("Op 6");
+				System.out.println("Ingrese el ID del cliente");
+				String clientID = Strscaner.next();
+				
+				client cliente = Adminisitrator.clientExists(ListOfClientes, clientID);
+				Adminisitrator.showQtyOfEachDoc(cliente);
 			}
 			
 			else if(option.equals("7")) {
@@ -136,6 +138,7 @@ public class DriverProgram {
 				
 			}
 			
+			Adminisitrator.ShowAvailableDocs(AvailableDocuments);
 		}
 		
 	}

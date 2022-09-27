@@ -111,6 +111,30 @@ public class Library_Admin {
 		}
 	}
 	
+	public void showQtyOfEachDoc(client cliente) {
+		int qtybooks = 0;
+		
+		int qtymagazine = 0;
+		
+		int qtyarticle = 0;
+	
+		for(documents aDocument: cliente.getBorrowedBooks()) {
+			if (aDocument.getType() == 1) {
+				qtybooks += 1;
+			}
+			
+			else if (aDocument.getType() == 2) {
+				qtyarticle += 1;
+			}
+			else if (aDocument.getType() == 3) {
+				qtymagazine += 1;
+			}
+		}
+		
+		System.out.println("El cliente tiene: \n Libros: " + qtybooks + "\nArticulos: " + qtyarticle + "\nRevistas: " + qtymagazine);
+		
+	}
+	
 	
 	public ArrayList<client> getListOfClientes() {
 		return ListOfClientes;
@@ -128,6 +152,8 @@ public class Library_Admin {
 	public void setAvailableDocuments(ArrayList<documents> availableDocumentes) {
 		AvailableDocuments = availableDocumentes;
 	}
+
+	
 	
 	
 }
