@@ -138,8 +138,18 @@ public class DriverProgram {
 			}
 			
 			else if(option.equals("8")) {
-				System.out.println("Op 8");
+				System.out.println("Escribe el ID del libro o articulo");
+				String DocID = Strscaner.next();
 				
+				boolean availability = Adminisitrator.IsBookOrMAgazineAvailable(AvailableDocuments, DocID);
+				
+				if(availability == true) {
+					System.out.println("El Documento con la ID: " + DocID + ", Se encunetra Disponible");
+				} 
+				
+				else {
+					System.out.println("No se encontro un libro o articulo con ese ID");
+				}
 			}
 			
 			Adminisitrator.ShowAvailableDocs(AvailableDocuments);

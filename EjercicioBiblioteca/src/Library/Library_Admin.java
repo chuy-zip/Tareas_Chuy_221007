@@ -149,6 +149,18 @@ public class Library_Admin {
 		return qty;
 	}
 	
+	public boolean IsBookOrMAgazineAvailable(ArrayList<documents> availableDocumentss, String docID) {
+		for (documents aDocument : availableDocumentss) {
+			if(aDocument.getID().equals(docID)) {
+				if(aDocument.getType() == 1 || aDocument.getType() == 2) {
+					return true;
+				}
+			}
+			
+		}
+		return false;
+	}
+	
 	public ArrayList<client> getListOfClientes() {
 		return ListOfClientes;
 	}
@@ -166,9 +178,5 @@ public class Library_Admin {
 		AvailableDocuments = availableDocumentes;
 	}
 
-	
-
-	
-	
 	
 }
