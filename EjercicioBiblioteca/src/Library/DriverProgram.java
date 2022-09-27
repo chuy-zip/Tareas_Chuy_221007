@@ -8,7 +8,11 @@ import Library.book;
 import Library.magazine;
 import Library.Library_Admin;
 
-
+/**
+ * Clase driver program para mostrar todos los resultados procesados y recibir informacion
+ * @author Ricardo Chuy
+ *
+ */
 public class DriverProgram {
 	
 	private static ArrayList<client> ListOfClientes;
@@ -156,7 +160,9 @@ public class DriverProgram {
 		}
 		
 	}
-	
+	/**
+	 * Mostrar el menu con todas las opciones del programa
+	 */
 	public static void showMenu(){
 		System.out.println("Bienvenido al program de librería. Ingrese el numero de opcion a realizar\n");
 		System.out.println("1.Agregar un Documento \n"+
@@ -169,7 +175,9 @@ public class DriverProgram {
 							"8.Ingresar un libro o artículo para revisar disponibilidad\n"+
 							"9.Salir\n");
 	}
-	
+	/*
+	 * Obtener la informacion para crear un nuevo documento (se pide informacion un tanto diferente en funcino del tipo del documento)
+	 */
 	public static void getDocumentInfo(Scanner _strScan, ArrayList<documents> _availableDocuments) {
 		
 		book libro;
@@ -273,7 +281,13 @@ public class DriverProgram {
 		
 		
 	}
-	
+	/**
+	 * Metod para crear un nuevo cliente
+	 * @param ClientList Lista de clientes de la bilbioteca
+	 * @param strScanner Scanner para leer input
+	 * @param IDclient ID del cliente (se pide antes para verificar si existe , sino existe el cliente se crea uno nuevo)
+	 * @return regresar un nuevo cliente que puede ser añadido a la lista
+	 */
 	public static client addNewClient(ArrayList<client> ClientList,Scanner strScanner, String IDclient) {
 		;
 		String clientName;

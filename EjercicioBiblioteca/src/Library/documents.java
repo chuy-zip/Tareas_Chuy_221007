@@ -1,5 +1,12 @@
 package Library;
 
+/**
+ * Clase padre de nombre "documentos" de esta clase se extienden 3 tipos de documento, book, article y magazine.
+ * Posee unicamente atributos y los metodos son unicamente sus getters y setters
+ * Tiene una variable "Type" para luego identificar de que tipo es cada calse hija
+ * @author Ricardo Chuy
+ *
+ */
 public abstract class documents {
 	protected int Type;
 	protected String ID;
@@ -12,6 +19,18 @@ public abstract class documents {
 	protected String BorrowDate;
 	protected String ReturnDate;
 	
+	/**
+	 * Atributos de la clase padre
+	 * @param _ID id del documento
+	 * @param _title titulo del documento
+	 * @param _Author autor del documento
+	 * @param _editorial la editorial del documento (no todas las clases hijas lo utilizan)
+	 * @param _topic tema del documento
+	 * @param _qty cantidad disponible
+	 * @param _Available estado de disponibilidad
+	 * @param _borrowDate
+	 * @param _returnDate
+	 */
 	public documents (String _ID, String _title, String _Author, String _editorial, String _topic, int _qty, boolean _Available, String _borrowDate, String _returnDate) {
 		this.Type = 0;
 		this.setID(_ID);
