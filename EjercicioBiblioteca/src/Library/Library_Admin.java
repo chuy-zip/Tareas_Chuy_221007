@@ -59,6 +59,16 @@ public class Library_Admin {
 			}
 			
 		}
+		return false;
+	}
+		
+	public boolean BookExists(ArrayList<documents> _availableDocuments, String given_ID){
+		for (documents aDocument : _availableDocuments) {
+			if(aDocument.getID().equals(given_ID)) {
+					return true;
+			}
+				
+		}
 		
 		return false;
 	}
@@ -88,6 +98,19 @@ public class Library_Admin {
 		System.out.println("Prestado con exito");
 		
 	} 
+	
+	public void returnBook(ArrayList<documents> _availableDocs, client _aclient, String ReturnDoc) {
+		for (documents aDocument: _availableDocs) {
+			if(aDocument.getID().equals(ReturnDoc)) {
+				aDocument.setQty(aDocument.getQty() + 1);
+				_aclient.getBorrowedBooks().add(aDocument);
+				_aclient.setBorrowedQty(_aclient.getBorrowedQty() - 1);
+				_aclient.getBorrowedBooks().remove(aDocument);
+				
+			}
+		}
+	}
+	
 	
 	public ArrayList<client> getListOfClientes() {
 		return ListOfClientes;

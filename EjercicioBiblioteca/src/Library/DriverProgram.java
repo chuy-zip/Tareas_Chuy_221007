@@ -101,7 +101,26 @@ public class DriverProgram {
 				String clientID = Strscaner.next();
 				
 				System.out.println("Ingrese el ID del libro a regresar");
-				String ReturneddocID = Strscaner.next();
+				String ReturnDocID = Strscaner.next();
+				
+				client cliente = Adminisitrator.clientExists(ListOfClientes, clientID);
+				boolean bookExists = Adminisitrator.BookExists(AvailableDocuments, ReturnDocID);
+				
+				if(cliente != null && bookExists == true) {
+					for (client aClient:ListOfClientes) {
+						System.out.println(aClient.getIDClient() + cliente.getIDClient() );
+						if(aClient.getIDClient().equals(cliente.getIDClient()) ) {
+							Adminisitrator.returnBook(AvailableDocuments, aClient, ReturnDocID);
+							System.out.println("Se ha regresado el libro");
+						}
+					}
+				}
+				
+				else {
+					System.out.println("No se ha podido regresar el libro el ID del cliente y/o el del libro es incorrecto");
+				}
+				
+				
 			}
 			
 			else if(option.equals("6")) {
