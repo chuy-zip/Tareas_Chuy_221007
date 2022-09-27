@@ -135,6 +135,19 @@ public class Library_Admin {
 		
 	}
 	
+	public int MagazineQtyBySpecificTopic(ArrayList<documents> _availableDocuments, String requestedTopic) {
+		int qty = 0;
+		for(documents aDocument: _availableDocuments) {
+			if(aDocument.getTopic().equals(requestedTopic)) {
+				
+				if(aDocument.getType() == 3) {
+					qty = qty + aDocument.getQty();
+				}
+				
+			}
+		}
+		return qty;
+	}
 	
 	public ArrayList<client> getListOfClientes() {
 		return ListOfClientes;
@@ -152,6 +165,8 @@ public class Library_Admin {
 	public void setAvailableDocuments(ArrayList<documents> availableDocumentes) {
 		AvailableDocuments = availableDocumentes;
 	}
+
+	
 
 	
 	

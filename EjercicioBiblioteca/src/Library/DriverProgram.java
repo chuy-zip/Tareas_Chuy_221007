@@ -130,7 +130,11 @@ public class DriverProgram {
 			}
 			
 			else if(option.equals("7")) {
-				System.out.println("Op 7");
+				System.out.println("Escriba el tema del cual se quiere buscar");
+				String requestedTopic = Strscaner.next();
+				
+				int QtyForTopic = Adminisitrator.MagazineQtyBySpecificTopic(AvailableDocuments, requestedTopic);
+				System.out.println("En total hay: " + QtyForTopic + " documentos para el tema de revista: " + requestedTopic);
 			}
 			
 			else if(option.equals("8")) {
